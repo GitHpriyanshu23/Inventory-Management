@@ -24,7 +24,6 @@ class Medicine(models.Model):
     last_alerted = models.DateTimeField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        # Ensure price_per_unit is a valid Decimal
         if isinstance(self.price_per_unit, Decimal128):
             self.price_per_unit = self.price_per_unit.to_decimal()
         elif isinstance(self.price_per_unit, str):

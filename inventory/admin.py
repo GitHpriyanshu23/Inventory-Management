@@ -22,7 +22,6 @@ admin.site.index_title = "Welcome to the Inventory Management Portal"
 # from django.contrib import admin
 # from django.apps import apps
 
-# # Get celery-beat models dynamically
 # celery_models = [
 #     'ClockedSchedule',
 #     'CrontabSchedule',
@@ -30,32 +29,6 @@ admin.site.index_title = "Welcome to the Inventory Management Portal"
 #     'PeriodicTask',
 #     'SolarSchedule',
 # ]
-
-# class HiddenAdmin(admin.ModelAdmin):
-#     """An empty admin model to hide the section."""
-#     def has_module_permission(self, request):
-#         # Prevent this model from showing in the admin panel
-#         return False
-
-# # Unregister or re-register models only if necessary
-# for model_name in celery_models:
-#     try:
-#         # Dynamically fetch the model
-#         model = apps.get_model('django_celery_beat', model_name)
-        
-#         # Unregister only if already registered
-#         if model in admin.site._registry:
-#             admin.site.unregister(model)
-        
-#         # Re-register with HiddenAdmin
-#         admin.site.register(model, HiddenAdmin)
-
-#     except admin.sites.NotRegistered:
-#         # Skip if the model is not registered
-#         pass
-#     except LookupError:
-#         # Skip if the model doesn't exist in the app
-#         pass
 
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
